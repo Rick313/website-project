@@ -1,15 +1,33 @@
-<nav class="nav-bar">
-  <a
-    class="nav-link"
-    *ngFor="let link of navigation"
-    [routerLink]="link.path"
-    routerLinkActive="active"
-    >{{ link.label }}</a
-  >
+<nav
+  class="nav-bar"
+  [ngClass]="{
+    open: menu === 'open',
+    close: menu === 'close'
+  }"
+>
+  <ng-container *ngFor="let link of navigation">
+    <a
+      class="nav-link"
+      *ngIf="link.enable"
+      [routerLink]="link.path"
+      [routerLinkActive]="'active'"
+    >
+      <div class="icon" [rxSvgUrl]="link.icon"></div>
+      <!--  {{ link.label }} -->
+    </a>
+  </ng-container>
 </nav>
 
 <main>
   <router-outlet></router-outlet>
 </main>
 
-<footer></footer>
+<ng-container *ngIf="(breakpoints$ | async) === 'small'">
+  <button
+    class="button-menu"
+    type="menu"
+    (click)="toggle()"
+    [rxSvgUrl]="iconmenu"
+  ></button>
+  <div class="overlay" *ngIf="menu === 'open'" (click)="toggle()"></div>
+</ng-container>

@@ -5,7 +5,8 @@
     "outDir": "../../out-tsc/app",
     "types": [],
     "paths": {
-      "@pages": ["./projects/client/src/pages/index.ts"]
+      "@pages": ["./projects/client/src/pages/index.ts"],
+      "@shared/*": ["./shared/*"]
     }
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
