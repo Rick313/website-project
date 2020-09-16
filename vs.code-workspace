@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "name": "My website",
+      "path": "."
+    },
+    {
+      "name": "Client",
+      "path": "./projects/client"
+    },
+    {
+      "name": "Shared",
+      "path": "./shared"
+    }
+  ]
+}
