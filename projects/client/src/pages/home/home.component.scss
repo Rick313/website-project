@@ -1,0 +1,24 @@
+@import '../../styles/card.scss';
+@import '../../styles/button.scss';
+
+.card-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column nowrap;
+  .card {
+    @include card;
+    img {
+      align-self: center;
+      margin: 0 auto;
+      height: 124px;
+      width: 124px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    button {
+      @include button;
+      margin: unset;
+      width: 100%;
+    }
+  }
+}

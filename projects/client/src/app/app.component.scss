@@ -1,0 +1,22 @@
+:host {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100vw;
+  height: 100vh;
+}
+
+.nav-bar {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: end;
+  width: 60px;
+  padding: 1rem;
+}
+
+.nav-link {
+  padding: 0.4rem;
+  &.active {
+    text-decoration: underline;
+  }
+}

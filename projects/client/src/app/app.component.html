@@ -1,0 +1,15 @@
+<nav class="nav-bar">
+  <a
+    class="nav-link"
+    *ngFor="let link of navigation"
+    [routerLink]="link.path"
+    routerLinkActive="active"
+    >{{ link.label }}</a
+  >
+</nav>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer></footer>
