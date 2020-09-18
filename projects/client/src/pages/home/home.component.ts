@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 interface ServiceCard {
-  img: SafeHtml | string;
+  img: string;
   text: string;
   route: { path: [string, any?]; label: string };
 }
@@ -14,7 +13,7 @@ interface ServiceCard {
 })
 export class HomeComponent implements OnInit {
   cards: ServiceCard[];
-  constructor(private readonly sanitizer: DomSanitizer) {}
+  constructor() {}
   ngOnInit(): void {
     this.cards = [
       {

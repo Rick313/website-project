@@ -1,14 +1,26 @@
-<p>
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, dolore
-  minima! Voluptate, ullam.
-</p>
+<section class="intro-section">
+  <h1>Lorem ipsum dolor sit amet.</h1>
+  <p>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, dolore
+    minima! Voluptate, ullam.
+  </p>
+</section>
 
-<div class="card-container">
-  <div class="card" *ngFor="let card of cards">
-    <img [src]="card.img" alt="img-{{ card.route.label }}" />
-    <p>{{ card.text }}</p>
-    <a [routerLink]="card.route.path">
-      <button type="button">{{ card.route.label }}</button>
-    </a>
+<div class="divider"></div>
+
+<section class="card-section">
+  <div class="card-container">
+    <rx-card class="card" *ngFor="let card of cards">
+      <div body>
+        <img [src]="card.img" alt="img-{{ card.route.label }}" />
+        <p>{{ card.text }}</p>
+        <a [routerLink]="card.route.path">
+          <button type="button">{{ card.route.label }}</button>
+        </a>
+      </div>
+    </rx-card>
   </div>
-</div>
+</section>
+
+<!--
+-->
