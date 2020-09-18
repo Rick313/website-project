@@ -6,8 +6,8 @@ button {
 }
 
 :host {
+  position: relative;
   display: flex;
-  flex-flow: row-reverse nowrap;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -39,12 +39,18 @@ $size: 280px;
   box-sizing: border-box;
   width: $size;
   height: 100vh;
-  flex-shrink: 0;
+  right: 0;
+  transform: translateX($size);
+  transition: transform 0.3s ease-in-out;
+  &.open {
+    transform: translateX(0);
+    & ~ .route-container {
+      transform: translateX(-$size);
+    }
+  }
+
   & > .link {
     padding: 1rem;
-  }
-  & ~ .route-container {
-    transform: translateX(-$size);
   }
 }
 

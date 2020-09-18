@@ -7,7 +7,7 @@
     [ngClass]="{ active: menu.state === 'open' }"
   ></button>
 
-  <nav class="navigation" *ngIf="menu.state === 'open'">
+  <nav class="navigation" [ngClass]="{ open: menu.state === 'open' }">
     <ng-container *ngFor="let link of navigation">
       <a
         class="link"
