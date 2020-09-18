@@ -1,33 +1,31 @@
-<nav
-  class="nav-bar"
-  [ngClass]="{
-    open: menu === 'open',
-    close: menu === 'close'
-  }"
->
-  <ng-container *ngFor="let link of navigation">
-    <a
-      class="nav-link"
-      *ngIf="link.enable"
-      [routerLink]="link.path"
-      [routerLinkActive]="'active'"
-    >
-      <div class="icon" [rxSvgUrl]="link.icon"></div>
-      <!--  {{ link.label }} -->
-    </a>
-  </ng-container>
-</nav>
-
-<main>
-  <router-outlet></router-outlet>
-</main>
-
-<ng-container *ngIf="(breakpoints$ | async) === 'small'">
+<ng-container *ngIf="setting$ | async; else loader">
   <button
     class="button-menu"
     type="menu"
     (click)="toggle()"
-    [rxSvgUrl]="iconmenu"
+    [rxInsertSvg]="menu.icon"
+    [ngClass]="{ active: menu.state === 'open' }"
   ></button>
-  <div class="overlay" *ngIf="menu === 'open'" (click)="toggle()"></div>
+
+  <nav class="navigation" *ngIf="menu.state === 'open'">
+    <ng-container *ngFor="let link of navigation">
+      <a
+        class="link"
+        *ngIf="link.enable"
+        [routerLink]="link.path"
+        [routerLinkActive]="'active'"
+        (click)="close()"
+      >
+        <span>{{ link.label }}</span>
+      </a>
+    </ng-container>
+  </nav>
+
+  <main class="route-container" (click)="close()">
+    <router-outlet></router-outlet>
+  </main>
 </ng-container>
+
+<ng-template #loader>
+  <div>loading...</div>
+</ng-template>

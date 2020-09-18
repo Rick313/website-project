@@ -1,7 +1,27 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { WindowService } from '@shared/services';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+
+interface Menu {
+  state: 'open' | 'close';
+  icon: string;
+}
+
+interface Footer {
+  owner: Owner;
+  copyright?: string;
+  years?: string;
+}
+
+interface Owner {
+  name: string;
+  tel?: string;
+  email?: string;
+  siret?: string;
+  adrress?: string;
+}
 
 type Navigation = {
   label: string;
@@ -10,27 +30,22 @@ type Navigation = {
   enable: boolean;
 }[];
 
+interface Setting {
+  infos: Footer;
+}
+
 @Component({
   selector: 'rx-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  menu: 'open' | 'close' = 'close';
-  iconmenu = './assets/icons/bars.svg';
-
-  breakpoints$: Observable<string>;
-  constructor(private readonly window: WindowService) {}
-  ngOnInit() {
-    this.breakpoints$ = this.window.breakpoint().pipe(
-      map((data) => {
-        if (data !== 'small') {
-          this.menu = 'open';
-        }
-        return data;
-      })
-    );
-  }
+  setting$: Observable<boolean>;
+  footer: Footer;
+  menu: Menu = {
+    state: 'close',
+    icon: './assets/icons/bars.svg',
+  };
 
   navigation: Navigation = [
     {
@@ -71,13 +86,50 @@ export class AppComponent implements OnInit {
     },
   ];
 
-  toggle(event: MouseEvent) {
-    if (this.menu === 'close') {
-      this.menu = 'open';
+  constructor(
+    private readonly http: HttpClient,
+    private readonly window: WindowService
+  ) {
+    this.window.breakpoint();
+  }
+
+  ngOnInit() {
+    this.setting$ = this.http
+      .get<Setting>('./assets/data/infos.data.json')
+      .pipe(
+        map((data) => {
+          this.footer = data.infos;
+          return true;
+        })
+      );
+  }
+
+  close() {
+    if (this.menu.state === 'open') {
+      this.menu = {
+        state: 'close',
+        icon: './assets/icons/bars.svg',
+      };
       return;
     }
-    if (this.menu === 'open') {
-      this.menu = 'close';
+  }
+  open() {
+    if (this.menu.state === 'close') {
+      this.menu = {
+        state: 'open',
+        icon: './assets/icons/times.svg',
+      };
+      return;
+    }
+  }
+
+  toggle() {
+    if (this.menu.state === 'close') {
+      this.open();
+      return;
+    }
+    if (this.menu.state === 'open') {
+      this.close();
       return;
     }
   }
