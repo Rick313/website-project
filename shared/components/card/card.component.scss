@@ -8,3 +8,10 @@
   padding: 0.8rem;
   border-radius: 4px;
 }
+
+[head],
+[body],
+[foot] {
+  box-sizing: border-box;
+  overflow: hidden;
+}
