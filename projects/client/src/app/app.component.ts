@@ -1,11 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { WindowService } from '@shared/services';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { HttpClient } from "@angular/common/http";
+import { Component, ElementRef, OnInit, Renderer2 } from "@angular/core";
+import { WindowService } from "@shared/services";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 interface Menu {
-  state: 'open' | 'close';
+  state: "open" | "close";
   icon: string;
 }
 
@@ -35,58 +35,63 @@ interface Setting {
 }
 
 @Component({
-  selector: 'rx-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  selector: "rx-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
+  host: {
+    class: "app-container",
+  },
 })
 export class AppComponent implements OnInit {
   setting$: Observable<boolean>;
   footer: Footer;
   menu: Menu = {
-    state: 'close',
-    icon: './assets/icons/bars.svg',
+    state: "close",
+    icon: "./assets/icons/bars.svg",
   };
 
   navigation: Navigation = [
     {
-      label: 'home',
-      path: ['/home'],
-      icon: './assets/icons/home.svg',
+      label: "home",
+      path: ["/home"],
+      icon: "./assets/icons/home.svg",
       enable: true,
     },
     {
-      label: 'services',
-      path: ['/services'],
-      icon: './assets/icons/laptop-code.svg',
+      label: "services",
+      path: ["/services"],
+      icon: "./assets/icons/laptop-code.svg",
       enable: true,
     },
     {
-      label: 'about',
-      path: ['/about'],
-      icon: './assets/icons/mug-hot.svg',
+      label: "about",
+      path: ["/about"],
+      icon: "./assets/icons/mug-hot.svg",
       enable: true,
     },
     {
-      label: 'portfolio',
-      path: ['/portfolio'],
-      icon: './assets/icons/book.svg',
+      label: "portfolio",
+      path: ["/portfolio"],
+      icon: "./assets/icons/book.svg",
       enable: false,
     },
     {
-      label: 'tutorial',
-      path: ['/tutorials'],
-      icon: './assets/icons/graduation-cap.svg',
+      label: "tutorial",
+      path: ["/tutorials"],
+      icon: "./assets/icons/graduation-cap.svg",
       enable: false,
     },
     {
-      label: 'contact',
-      path: ['/contact'],
-      icon: './assets/icons/envelope.svg',
+      label: "contact",
+      path: ["/contact"],
+      icon: "./assets/icons/envelope.svg",
       enable: true,
     },
   ];
 
   constructor(
+    private readonly el: ElementRef,
+    private readonly render: Renderer2,
     private readonly http: HttpClient,
     private readonly window: WindowService
   ) {
@@ -95,7 +100,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.setting$ = this.http
-      .get<Setting>('./assets/data/infos.data.json')
+      .get<Setting>("./assets/data/infos.data.json")
       .pipe(
         map((data) => {
           this.footer = data.infos;
@@ -105,30 +110,29 @@ export class AppComponent implements OnInit {
   }
 
   close() {
-    if (this.menu.state === 'open') {
+    if (this.menu.state === "open") {
       this.menu = {
-        state: 'close',
-        icon: './assets/icons/bars.svg',
+        state: "close",
+        icon: "./assets/icons/bars.svg",
       };
       return;
     }
   }
   open() {
-    if (this.menu.state === 'close') {
+    if (this.menu.state === "close") {
       this.menu = {
-        state: 'open',
-        icon: './assets/icons/times.svg',
+        state: "open",
+        icon: "./assets/icons/times.svg",
       };
       return;
     }
   }
-
   toggle() {
-    if (this.menu.state === 'close') {
+    if (this.menu.state === "close") {
       this.open();
       return;
     }
-    if (this.menu.state === 'open') {
+    if (this.menu.state === "open") {
       this.close();
       return;
     }
