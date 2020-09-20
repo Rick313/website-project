@@ -3,19 +3,18 @@ import {
   ElementRef,
   Input,
   Renderer2,
-  TemplateRef,
   ViewContainerRef,
-} from '@angular/core';
-import { SvgService } from './svg.service';
+} from "@angular/core";
+import { SvgService } from "./svg.service";
 
-@Directive({ selector: '[rxInsertSvg]' })
+@Directive({ selector: "[rx-insert-svg]" })
 export class SvgDirective {
-  @Input('rxInsertSvg')
+  @Input("rx-insert-svg")
   set url(value: string) {
-    this.service.svgFromUrl(value, 'String').subscribe({
+    this.service.svgFromUrl(value, "String").subscribe({
       error: (err) => console.error(err),
       next: (data) => {
-        this.render.setProperty(this.el.nativeElement, 'innerHTML', data);
+        this.render.setProperty(this.el.nativeElement, "innerHTML", data);
       },
     });
   }
