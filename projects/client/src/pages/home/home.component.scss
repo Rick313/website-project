@@ -6,20 +6,17 @@
   overflow-x: hidden;
 }
 
-.divider {
-  height: 2px;
-  width: 80%;
-  background: #1f1f22;
-  margin: 0.8rem auto;
-  flex-shrink: 0;
-}
-
-.intro-section {
+.i {
   height: 80%;
   flex-shrink: 0;
 }
 
-.card-section {
+.b {
+  text-align: center;
+  margin: 1.4rem 0;
+}
+
+.services {
   padding: 1rem 1.5rem;
   padding-top: unset;
 }
@@ -30,36 +27,9 @@
   flex-flow: row nowrap;
   overflow: auto;
   width: 100%;
-  .card {
-    margin: 1rem;
-    height: 280px;
-    flex-basis: 55%;
-    flex-shrink: 0;
-    background: #1f1f22;
-    &:first-of-type {
-      margin-left: unset;
-    }
-
-    img {
-      align-self: center;
-      margin: 0 auto;
-      height: 124px;
-      width: 124px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-    button {
-      margin: unset;
-      width: 100%;
-    }
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .card {
-    flex-shrink: 1;
-    flex-basis: 0;
-    width: auto;
-    overflow: hidden;
+  padding-top: 0.4rem;
+  padding-bottom: 1rem;
+  .card-service {
+    flex-basis: 60%;
   }
 }

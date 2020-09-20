@@ -1,10 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@import './styles/reset';
-@import './styles/swatch';
-@import './styles/font';
-@import './styles/initial';
-
-a {
-  color: inherit;
-  text-decoration: unset;
-}
+@import "reset";
+@import "font";
+@import "swatch";
+@import "initial";
+@import "global";
+@import "shared";

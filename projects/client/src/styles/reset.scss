@@ -45,7 +45,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 table {
@@ -56,4 +56,9 @@ table {
 // My rules
 body {
   margin: unset;
+}
+
+a {
+  color: inherit;
+  text-decoration: unset;
 }

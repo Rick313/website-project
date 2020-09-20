@@ -1,5 +1,9 @@
-<section class="intro-section">
+<section class="i">
   <h1>Lorem ipsum dolor sit amet.</h1>
+</section>
+<div class="divider"></div>
+
+<section class="b">
   <p>
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus, dolore
     minima! Voluptate, ullam.
@@ -8,15 +12,13 @@
 
 <div class="divider"></div>
 
-<section class="card-section">
+<section class="services">
   <div class="card-container">
-    <rx-card class="card" *ngFor="let card of cards">
-      <div body>
+    <rx-card class="card-service" *ngFor="let card of cards">
+      <div class="card-body" body>
         <img [src]="card.img" alt="img-{{ card.route.label }}" />
         <p>{{ card.text }}</p>
-        <a [routerLink]="card.route.path">
-          <button type="button">{{ card.route.label }}</button>
-        </a>
+        <a [routerLink]="card.route.path" rx-button>{{ card.route.label }}</a>
       </div>
     </rx-card>
   </div>
