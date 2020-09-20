@@ -1,0 +1,37 @@
+@import "swatch";
+@mixin rx-button($background: transparent, $color: false) {
+  background-color: $background;
+  @if $color == false {
+    @if (lightness($background) > 70) {
+      color: black;
+    } @else {
+      color: white;
+    }
+  } @else {
+    color: $color;
+  }
+}
+
+[rx-button] {
+  display: flex;
+  border: unset;
+  background: unset;
+  outline: unset;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.6rem;
+  letter-spacing: 1px;
+  &.basic {
+    @include rx-button($teal_4);
+  }
+  &.primary {
+  }
+  &.accent {
+  }
+  &.warn {
+  }
+  &.infos {
+  }
+  &:disabled {
+  }
+}

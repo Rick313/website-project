@@ -148,6 +148,13 @@
               "projects/client/src/assets"
             ],
             "styles": ["projects/client/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./projects/client/src/styles",
+                "./shared/styles",
+                "./shared/directives"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
