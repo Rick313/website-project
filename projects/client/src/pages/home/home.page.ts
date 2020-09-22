@@ -17,4 +17,4 @@ const routes: Routes = [{ path: "", component: HomeComponent }];
     CardModule,
   ],
 })
-export class HomeModule {}
+export class HomePageModule {}

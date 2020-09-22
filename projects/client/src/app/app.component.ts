@@ -1,26 +1,24 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, ElementRef, OnInit, Renderer2 } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { select, Store } from "@ngrx/store";
+import { AppState } from "@shared/core-data";
+
+import {
+  Infos,
+  Settings,
+  SettingsActions,
+  SettingsSelector,
+  SettingsState,
+} from "@shared/core-data/settings";
+import { BusinessActions } from "@shared/core-data/business";
 import { WindowService } from "@shared/services";
+
 import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { map, tap } from "rxjs/operators";
 
 interface Menu {
   state: "open" | "close";
   icon: string;
-}
-
-interface Footer {
-  owner: Owner;
-  copyright?: string;
-  years?: string;
-}
-
-interface Owner {
-  name: string;
-  tel?: string;
-  email?: string;
-  siret?: string;
-  adrress?: string;
 }
 
 type Navigation = {
@@ -29,10 +27,6 @@ type Navigation = {
   icon: string;
   enable: boolean;
 }[];
-
-interface Setting {
-  infos: Footer;
-}
 
 @Component({
   selector: "rx-root",
@@ -43,8 +37,8 @@ interface Setting {
   },
 })
 export class AppComponent implements OnInit {
-  setting$: Observable<boolean>;
-  footer: Footer;
+  setting$: Observable<SettingsState>;
+  footer: Infos;
   menu: Menu = {
     state: "close",
     icon: "./assets/icons/bars.svg",
@@ -90,23 +84,18 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(
-    private readonly el: ElementRef,
-    private readonly render: Renderer2,
     private readonly http: HttpClient,
-    private readonly window: WindowService
+    private readonly window: WindowService,
+    private readonly store: Store<AppState>
   ) {
     this.window.breakpoint();
   }
 
   ngOnInit() {
-    this.setting$ = this.http
-      .get<Setting>("./assets/data/infos.data.json")
-      .pipe(
-        map((data) => {
-          this.footer = data.infos;
-          return true;
-        })
-      );
+    this.store.dispatch(BusinessActions.load());
+    this.store.dispatch(SettingsActions.load());
+
+    this.setting$ = this.store.pipe(select(SettingsSelector.feature));
   }
 
   close() {

@@ -12,17 +12,14 @@
 
 <div class="divider"></div>
 
-<section class="services">
+<section class="services" *ngIf="cards$ | async as cards">
   <div class="card-container">
     <rx-card class="card-service" *ngFor="let card of cards">
       <div class="card-body" body>
-        <img [src]="card.img" alt="img-{{ card.route.label }}" />
-        <p>{{ card.text }}</p>
-        <a [routerLink]="card.route.path" rx-button>{{ card.route.label }}</a>
+        <img [src]="card.picture" alt="img-{{ card.name }}" />
+        <p>{{ card.desciption }}</p>
+        <a [routerLink]="['/services', card.name]" rx-button>{{ card.name }}</a>
       </div>
     </rx-card>
   </div>
 </section>
-
-<!--
--->

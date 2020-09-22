@@ -1,9 +1,4 @@
-button {
-  background: unset;
-  border: unset;
-  outline: unset;
-  padding: unset;
-}
+@import "swatch";
 
 :host {
   position: relative;
@@ -18,7 +13,7 @@ $size: 280px;
   position: fixed;
   right: 0;
   top: 0;
-  fill: whitesmoke;
+  fill: $gray_8;
   z-index: 10000;
   transition: transform 0.3s ease-in-out;
   &.active {
