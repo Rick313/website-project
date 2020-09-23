@@ -84,7 +84,6 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(
-    private readonly http: HttpClient,
     private readonly window: WindowService,
     private readonly store: Store<AppState>
   ) {
@@ -92,9 +91,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(BusinessActions.load());
+    this.store.dispatch(BusinessActions.load({}));
     this.store.dispatch(SettingsActions.load());
-
     this.setting$ = this.store.pipe(select(SettingsSelector.feature));
   }
 

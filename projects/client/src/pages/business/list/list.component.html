@@ -13,7 +13,7 @@
         <div class="card-body" body>
           <img [src]="card.picture" alt="img-{{ card.name }}" />
           <p>{{ card.desciption }}</p>
-          <a [routerLink]="['/services', card.name]" rx-button>{{
+          <a [routerLink]="['/services', card.name, card.id]" rx-button>{{
             card.name
           }}</a>
         </div>

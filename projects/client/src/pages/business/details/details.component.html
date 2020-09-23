@@ -1,1 +1,9 @@
-<p>details works!</p>
+<ng-container *ngIf="business$ | async as business">
+  <div>
+    <button type="button" (click)="back()">Services</button>
+  </div>
+
+  <h1>{{ business.name }}</h1>
+  <img [src]="business.picture" [alt]="'img-' + business.name" />
+  <p>{{ business.desciption }}</p>
+</ng-container>

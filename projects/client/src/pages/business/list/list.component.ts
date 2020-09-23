@@ -16,7 +16,7 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
     this.cards$ = this.store.pipe(
       select(BusinessSelectors.list, {
-        select: ["desciption", "name", "picture"],
+        select: ["desciption", "name", "picture", "id"],
         order: (a, b) => (a.name > b.name ? 1 : -1),
       })
     );

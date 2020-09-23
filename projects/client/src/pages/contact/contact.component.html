@@ -1,1 +1,39 @@
-<p>contact works!</p>
+
+  <h1>Contact me</h1>
+  <div class="divider"></div>
+  <p>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga magni officia
+    mollitia est, harum aspernatur quam minus delectus eius repellendus. Aut,
+    qui.
+  </p>
+
+  <div class="divider"></div>
+
+  <form [formGroup]="contactForm" (ngSubmit)="send()">
+
+    <div class="control-group">
+      <div class="form-control">
+        <label for="name">name<span class="require">*</span></label>
+        <input formControlName="name" type="text" id="name" required />
+      </div>
+      
+      <div class="form-control">
+        <label for="email">email<span class="require">*</span></label>
+        <input formControlName="email" type="email" id="email" required />
+      </div>
+    </div>
+    
+    <div class="form-control">
+      <label for="subject">subject<span class="require">*</span></label>
+      <input formControlName="subject" type="text" id="subject" required />
+    </div>
+
+
+    <div class="form-control">
+      <label for="message">message<span class="require">*</span></label>
+      <textarea formControlName="message" rows="12" id="message" required></textarea>
+    </div>
+    <div class="from-button">
+      <button type="submit" rx-button>send</button>
+    </div>
+  </form>
