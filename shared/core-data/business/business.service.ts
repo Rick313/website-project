@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { AngularFirestore } from "@angular/fire/firestore";
 import { Observable } from "rxjs";
 import { generateID } from "shared/utils";
 import { Business, BusinessList } from "./business.model";
@@ -43,14 +44,17 @@ export class BusinessService {
   private get business() {
     return this._business;
   }
-  constructor(private readonly http: HttpClient) {}
+  constructor(
+    private readonly http: HttpClient,
+    private readonly firestore: AngularFirestore
+  ) {}
+
   get(): Observable<BusinessList>;
-  get(
-    where: (business: Business, index: Number) => boolean
-  ): Observable<Business>;
-  get(where?: (business: Business, index: Number) => boolean) {
+  get(where: (business: Business) => boolean): Observable<BusinessList>;
+  get(where?: (business: Business) => boolean) {
+    this.firestore.collection("town").doc("poitiers").set({ name: "poitiers" });
     if (where) {
-      return new Observable((sub) => sub.next(this.business.find(where)));
+      return new Observable((sub) => sub.next(this.business.filter(where)));
     } else {
       return new Observable((sub) => sub.next(this.business));
     }

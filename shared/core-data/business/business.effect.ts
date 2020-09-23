@@ -19,8 +19,8 @@ export class BusinessEffect {
   loadBuisness$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadBusiness),
-      mergeMap(() =>
-        this.service.get().pipe(
+      mergeMap((action) =>
+        this.service.get(action.where).pipe(
           map((data) => businessLoaded({ data })),
           catchError(() => of(loadBusinessFail))
         )

@@ -1,7 +1,10 @@
 import { createAction, props } from "@ngrx/store";
 import { BusinessList } from "./business.model";
 
-export const loadBusiness = createAction("[Business API] - Load business.");
+export const loadBusiness = createAction(
+  "[Business API] - Load business.",
+  props<{ where?: any }>()
+);
 export const businessLoaded = createAction(
   "[Business API] - Business loaded.",
   props<{ data: BusinessList }>()
