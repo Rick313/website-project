@@ -9,6 +9,10 @@
       "path": "./projects/client"
     },
     {
+      "name": "Dashboard",
+      "path": "./projects/dashboard"
+    },
+    {
       "name": "Shared",
       "path": "./shared"
     }

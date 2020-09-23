@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "fire-dev-33d84": {
+      "hosting": {
+        "my-website": [
+          "fire-dev-33d84"
+        ]
+      }
+    }
+  }
+}

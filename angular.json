@@ -47,8 +47,13 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.scss"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -98,6 +103,10 @@
           "options": {
             "browserTarget": "my-website:build"
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     },
@@ -147,7 +156,9 @@
               "projects/client/src/favicon.ico",
               "projects/client/src/assets"
             ],
-            "styles": ["projects/client/src/styles.scss"],
+            "styles": [
+              "projects/client/src/styles.scss"
+            ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "./projects/client/src/styles",
@@ -216,7 +227,9 @@
               "projects/client/src/favicon.ico",
               "projects/client/src/assets"
             ],
-            "styles": ["projects/client/src/styles.scss"],
+            "styles": [
+              "projects/client/src/styles.scss"
+            ],
             "scripts": []
           }
         },
@@ -228,7 +241,9 @@
               "projects/client/tsconfig.spec.json",
               "projects/client/e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
@@ -291,7 +306,9 @@
               "projects/dashboard/src/favicon.ico",
               "projects/dashboard/src/assets"
             ],
-            "styles": ["projects/dashboard/src/styles.scss"],
+            "styles": [
+              "projects/dashboard/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -353,7 +370,9 @@
               "projects/dashboard/src/favicon.ico",
               "projects/dashboard/src/assets"
             ],
-            "styles": ["projects/dashboard/src/styles.scss"],
+            "styles": [
+              "projects/dashboard/src/styles.scss"
+            ],
             "scripts": []
           }
         },
@@ -365,7 +384,9 @@
               "projects/dashboard/tsconfig.spec.json",
               "projects/dashboard/e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {
