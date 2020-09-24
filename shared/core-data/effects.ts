@@ -1,3 +1,5 @@
 import { BusinessEffect } from "./business/business.effect";
 import { SettingsEffect } from "./settings/settings.effect";
-export const effects = [BusinessEffect, SettingsEffect];
+import { UserEffect } from "./user/user.effect";
+import { AuthEffect } from "./auth/auth.effect";
+export const effects = [AuthEffect, UserEffect, BusinessEffect, SettingsEffect];

@@ -3,32 +3,62 @@ import { InjectionToken, ModuleWithProviders, NgModule } from "@angular/core";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 
-import { AngularFireAuth } from "@angular/fire/auth";
+import {
+  AngularFireModule,
+  FirebaseAppConfig,
+  FirebaseOptions,
+  FIREBASE_APP_NAME,
+  FIREBASE_OPTIONS,
+} from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
-import { AngularFireStorage } from "@angular/fire/storage";
+import { AngularFireStorageModule } from "@angular/fire/storage";
+
+import {
+  StoreDevtoolsModule,
+  INITIAL_OPTIONS,
+  StoreDevtoolsConfig,
+} from "@ngrx/store-devtools";
 
 import { reducers } from "./reducers";
 import { effects } from "./effects";
 
 const API_REGISTER = new InjectionToken<{}>("ApiRegister");
 
+interface CoreDataOptions {
+  firebase?: FirebaseOptions;
+  firebaseConfig?: string | FirebaseAppConfig;
+  devtool?: StoreDevtoolsConfig;
+  http?: any;
+}
+
 @NgModule({
   imports: [
     HttpClientModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects),
-    AngularFireAuth,
+    StoreDevtoolsModule.instrument(),
+    AngularFireModule,
+    AngularFireAuthModule,
     AngularFirestoreModule,
-    // AngularFireAnalyticsModule,
+    AngularFireStorageModule,
+    AngularFireAnalyticsModule,
   ],
   exports: [StoreModule, EffectsModule],
 })
 export class CoreDataModule {
-  static register(options): ModuleWithProviders<CoreDataModule> {
+  static register(
+    options: CoreDataOptions
+  ): ModuleWithProviders<CoreDataModule> {
     return {
       ngModule: CoreDataModule,
-      providers: [{ provide: API_REGISTER, useValue: options }],
+      providers: [
+        { provide: FIREBASE_OPTIONS, useValue: options.firebase },
+        { provide: FIREBASE_APP_NAME, useValue: options.firebaseConfig },
+        { provide: INITIAL_OPTIONS, useValue: options.devtool },
+        { provide: API_REGISTER, useValue: options.http },
+      ],
     };
   }
 }
