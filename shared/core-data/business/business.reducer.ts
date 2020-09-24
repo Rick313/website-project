@@ -6,22 +6,20 @@ import {
 } from "@ngrx/store";
 import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 
-import { Business, BusinessList } from "./business.model";
+import { Business } from "./business.model";
 import { loadBusinessFail, businessLoaded } from "./business.action";
 import { AppState } from "../reducers";
-import { findMany, findManyOptions, selectObjectKeys } from "shared/utils";
+import { findMany, findManyOptions } from "shared/utils";
 import { FindOne, findOne } from "shared/utils/findOne";
 
 export interface BusinessState extends EntityState<Business> {}
 const adapter: EntityAdapter<Business> = createEntityAdapter<Business>({
-  selectId: (business: Business) => {
-    return business.id;
-  },
+  selectId: (business: Business) => business.id,
 });
-const intialState: BusinessState = adapter.getInitialState();
+const initialState: BusinessState = adapter.getInitialState();
 
 export const businessReducer = createReducer(
-  intialState,
+  initialState,
   on(businessLoaded, (state, { data }) => adapter.setAll(data, state)),
   on(loadBusinessFail, (state) => state)
 );
