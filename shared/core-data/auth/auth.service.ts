@@ -32,8 +32,7 @@ export class AuthService {
   register(email: string, password: string) {
     return this.auth
       .createUserWithEmailAndPassword(email, password)
-      .then(({ user }) => this._record(user))
-      .catch((err) => console.error(err));
+      .then(({ user }) => this._record(user));
   }
 
   login(email: string, password: string) {
@@ -47,28 +46,17 @@ export class AuthService {
   }
 
   private _record(user: firebase.User) {
-    return this.firestore
-      .collection<User>("user")
-      .valueChanges()
-      .pipe(
-        switchMap((users) => {
-          const data: User = {
-            id: user.uid,
-            name: user.displayName,
-            email: user.email,
-            created_at: new Date(),
-            updated_ad: new Date(),
-            delete_at: null,
-            roles: {},
-          };
-          if (users.length === 0) {
-            data.roles = { owner: true };
-          } else {
-            data.roles = { subscriber: true };
-          }
-          return this.firestore.collection("user").doc(user.uid).set(data);
-        })
-      )
-      .toPromise();
+    const data: User = {
+      id: user.uid,
+      name: user.displayName,
+      email: user.email,
+      created_at: new Date(),
+      updated_ad: new Date(),
+      delete_at: null,
+      roles: {
+        subscriber: true,
+      },
+    };
+    this.firestore.collection("user").doc(user.uid).set(data, { merge: true });
   }
 }

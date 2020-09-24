@@ -28,8 +28,8 @@ export class AuthEffect {
       switchMap((action) =>
         this.service
           .register(action.email, action.password)
-          .then(() => registerSuccess({ user: null, authenticated: false }))
-          .catch((err) => registerFail({ user: null, authenticated: false }))
+          .then(() => registerSuccess())
+          .catch((error) => registerFail({ error }))
       )
     )
   );
@@ -41,7 +41,7 @@ export class AuthEffect {
         this.service
           .login(action.email, action.password)
           .then((user) => loginSuccess({ user, authenticated: true }))
-          .catch((err) => loginFail({ user: null, authenticated: false }))
+          .catch((error) => loginFail({ error }))
       )
     )
   );
@@ -53,9 +53,7 @@ export class AuthEffect {
         this.service
           .logout()
           .then(() => logoutSuccess({ user: null, authenticated: false }))
-          .catch((err) =>
-            logoutFail({ user: action.user, authenticated: true })
-          )
+          .catch((error) => logoutFail({ error }))
       )
     )
   );

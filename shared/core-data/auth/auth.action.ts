@@ -5,13 +5,10 @@ export const register = createAction(
   "[Auth API] - Register",
   props<{ email: string; password: string }>()
 );
-export const registerSuccess = createAction(
-  "[Auth API] - Register succes",
-  props<{ user: null; authenticated: false }>()
-);
+export const registerSuccess = createAction("[Auth API] - Register succes");
 export const registerFail = createAction(
   "[Auth API] - Register fail",
-  props<{ user: null; authenticated: false }>()
+  props<{ error: Error }>()
 );
 
 export const login = createAction(
@@ -24,7 +21,7 @@ export const loginSuccess = createAction(
 );
 export const loginFail = createAction(
   "[Auth API] - Log in fail",
-  props<{ user: null; authenticated: false }>()
+  props<{ error: Error }>()
 );
 
 export const logout = createAction(
@@ -37,7 +34,7 @@ export const logoutSuccess = createAction(
 );
 export const logoutFail = createAction(
   "[Auth API] - Log out fail",
-  props<{ user: User; authenticated: true }>()
+  props<{ error: Error }>()
 );
 
 export const AuthActions = {
