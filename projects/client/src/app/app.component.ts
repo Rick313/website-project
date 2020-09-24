@@ -1,20 +1,16 @@
-import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { select, Store } from "@ngrx/store";
-import { AppState } from "@shared/core-data";
+import { Observable } from "rxjs";
 
 import {
   Infos,
-  Settings,
   SettingsActions,
   SettingsSelector,
   SettingsState,
 } from "@shared/core-data/settings";
+import { AppState } from "@shared/core-data";
 import { BusinessActions } from "@shared/core-data/business";
 import { WindowService } from "@shared/services";
-
-import { Observable } from "rxjs";
-import { map, tap } from "rxjs/operators";
 
 interface Menu {
   state: "open" | "close";
