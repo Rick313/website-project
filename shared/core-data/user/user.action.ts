@@ -27,7 +27,3 @@ export const updateUserFail = createAction("[User api] - Update user fail");
 export const UsersActions = {
   load: loadUsers,
 };
-
-export const UserActions = {
-  update: updateUser,
-};
