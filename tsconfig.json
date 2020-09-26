@@ -11,6 +11,14 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": ["es2018", "dom"]
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "@config": ["./config/index.ts"],
+      "@libraries/ui": ["dist/libraries/ui/libraries-ui", "dist/libraries/ui"],
+      "@libraries/core-data": [
+        "dist/libraries/core-data/libraries-core-data",
+        "dist/libraries/core-data"
+      ]
+    }
   }
 }

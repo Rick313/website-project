@@ -1,0 +1,17 @@
+{
+  "name": "@libraries/ui",
+  "version": "0.0.1",
+  "scripts": {
+    "scss-bundle": "node src/scripts/scss.bundle.js"
+  },
+  "peerDependencies": {
+    "@angular/common": "^10.1.2",
+    "@angular/core": "^10.1.2"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "scss-bundle": "^3.1.2"
+  }
+}

@@ -1,1 +1,1 @@
-export { CardModule } from './card/card.module';
+export { CardModule } from "./card/card.module";

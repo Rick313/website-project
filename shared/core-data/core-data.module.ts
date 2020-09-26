@@ -12,7 +12,11 @@ import {
 } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
-import { AngularFireAnalyticsModule } from "@angular/fire/analytics";
+import {
+  AngularFireAnalyticsModule,
+  ScreenTrackingService,
+  UserTrackingService,
+} from "@angular/fire/analytics";
 import { AngularFireStorageModule } from "@angular/fire/storage";
 
 import {
@@ -33,6 +37,9 @@ interface CoreDataOptions {
   http?: any;
 }
 
+/**
+ * @deprecated 'Use core-dara form @libraries/code-data'
+ */
 @NgModule({
   imports: [
     HttpClientModule,
@@ -43,7 +50,6 @@ interface CoreDataOptions {
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireAnalyticsModule,
   ],
   exports: [StoreModule, EffectsModule],
 })

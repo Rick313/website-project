@@ -13,6 +13,10 @@
       "path": "./projects/dashboard"
     },
     {
+      "name": "Librabries",
+      "path": "./projects/libraries"
+    },
+    {
       "name": "Shared",
       "path": "./shared"
     }

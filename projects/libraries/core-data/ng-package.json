@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../../dist/libraries/core-data",
+  "lib": {
+    "entryFile": "src/public-api.ts",
+    "flatModuleFile": "core-data",
+    "umdModuleIds": {
+      "@ngrx/store": "@ngrx/store",
+      "@ngrx/effects": "@ngrx/effects",
+      "@ngrx/store-devtools": "@ngrx/store-devtools",
+      "@ngrx/entity": "@ngrx/entity",
+      "firebase": "firebase"
+    }
+  }
+}

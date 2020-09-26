@@ -49,12 +49,16 @@ export const authReducer = createReducer(
 
 export const AuthSelector = {
   feature: createFeatureSelector("auth"),
+  error: createSelector(
+    (state: AppState) => state.auth,
+    ({ error }: AuthState) => ({ error })
+  ),
   user: createSelector(
     (state: AppState) => state.auth,
-    ({ user, error }: AuthState) => ({ user, error })
+    ({ user }: AuthState) => user
   ),
   authenticated: createSelector(
     (state: AppState) => state.auth,
-    ({ error, authenticated }: AuthState) => ({ authenticated, error })
+    ({ authenticated }: AuthState) => authenticated
   ),
 };
