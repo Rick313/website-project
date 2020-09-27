@@ -9,7 +9,7 @@ const businessData: BusinessList = [
   {
     id: generateID(),
     name: "design",
-    desciption: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
     content: "",
     picture: "https://fakeimg.pl/440x230/282828/eae0d0/?text=design",
     created_at: new Date(),
@@ -18,7 +18,7 @@ const businessData: BusinessList = [
   {
     id: generateID(),
     name: "website",
-    desciption: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
     content: "",
     picture: "https://fakeimg.pl/440x230/282828/eae0d0/?text=website",
     created_at: new Date(),
@@ -27,7 +27,7 @@ const businessData: BusinessList = [
   {
     id: generateID(),
     name: "application",
-    desciption: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
+    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit.",
     content: "",
     picture: "https://fakeimg.pl/440x230/282828/eae0d0/?text=application",
     created_at: new Date(),

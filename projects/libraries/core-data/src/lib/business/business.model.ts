@@ -3,7 +3,7 @@ export interface Business {
   name: string;
   picture: string;
   content: string;
-  desciption: string;
+  description: string;
   created_at: Date;
   updated_at: Date;
 }

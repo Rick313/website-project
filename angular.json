@@ -49,9 +49,16 @@
               "projects/client/src/favicon.ico",
               "projects/client/src/assets"
             ],
-            "styles": ["projects/client/src/styles.scss"],
+            "styles": [
+              "projects/client/src/styles.scss",
+              "projects/libraries/ui/src/lib/theme.scss"
+            ],
             "stylePreprocessorOptions": {
-              "includePaths": ["./projects/client/src/styles", "./styles"]
+              "includePaths": [
+                "projects/client/src/styles",
+                "projects/libraries/ui/src/lib/styles",
+                "projects/libraries/ui/src/lib/directives"
+              ]
             },
             "scripts": []
           },
@@ -189,9 +196,16 @@
               "projects/dashboard/src/favicon.ico",
               "projects/dashboard/src/assets"
             ],
-            "styles": ["projects/dashboard/src/styles.scss"],
+            "styles": [
+              "projects/dashboard/src/styles.scss",
+              "projects/libraries/ui/src/lib/theme.scss"
+            ],
             "stylePreprocessorOptions": {
-              "includePaths": ["./projects/dashboard/src/styles", "./styles"]
+              "includePaths": [
+                "projects/dashboard/src/styles",
+                "projects/libraries/ui/src/lib/styles",
+                "projects/libraries/ui/src/lib/directives"
+              ]
             },
             "scripts": []
           },

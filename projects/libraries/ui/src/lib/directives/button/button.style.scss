@@ -1,4 +1,4 @@
-@import "swatch";
+@import "swatches";
 @mixin rx-button($background: transparent, $color: false) {
   background-color: $background;
   @if $color == false {
@@ -29,8 +29,10 @@
   &.accent {
   }
   &.warn {
+    @include rx-button($red_6);
   }
   &.infos {
+    @include rx-button($blue_6);
   }
   &:disabled {
   }

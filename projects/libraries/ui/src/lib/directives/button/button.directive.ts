@@ -8,7 +8,7 @@ import {
 
 @Directive({ selector: "[rx-button]" })
 export class ButtonDirective {
-  private _color: string;
+  private _color: string = "basic";
   @Input("color")
   set color(value: string) {
     this.render.removeClass(this.el.nativeElement, this.color);
@@ -23,9 +23,5 @@ export class ButtonDirective {
     private readonly el: ElementRef,
     private readonly render: Renderer2,
     private readonly container: ViewContainerRef
-  ) {
-    if (!this.color) {
-      this.color = "basic";
-    }
-  }
+  ) {}
 }
