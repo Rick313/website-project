@@ -1,14 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { select, Store } from "@ngrx/store";
-import { AppState } from "@shared/core-data";
-import {
-  Business,
-  BusinessActions,
-  BusinessSelectors,
-} from "@shared/core-data/business";
 import { Observable } from "rxjs";
 import { map, switchMap } from "rxjs/operators";
+
+import { AppState, Business, BusinessSelectors } from "@libraries/core-data";
 
 @Component({
   selector: "rx-details",

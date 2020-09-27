@@ -1,21 +1,18 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
+import { SettingsComponent } from "./settings.component";
 import { RouterModule, Routes } from "@angular/router";
-import { ContactComponent } from "./contact.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { ButtonModule, SvgModule } from "@libraries/ui";
 
-const routes: Routes = [{ path: "", component: ContactComponent }];
+const routes: Routes = [{ path: "", component: SettingsComponent }];
 
 @NgModule({
-  declarations: [ContactComponent],
+  declarations: [SettingsComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     FormsModule,
-    ButtonModule,
-    SvgModule,
   ],
 })
-export class ContactPageModule {}
+export class SettingsPageModule {}

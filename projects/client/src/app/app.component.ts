@@ -4,13 +4,14 @@ import { Observable } from "rxjs";
 
 import {
   Infos,
+  AppState,
   SettingsActions,
   SettingsSelector,
   SettingsState,
-} from "@shared/core-data/settings";
-import { AppState } from "@shared/core-data";
-import { BusinessActions } from "@shared/core-data/business";
-import { WindowService } from "@shared/services";
+  BusinessActions,
+} from "@libraries/core-data";
+
+import { WindowService } from "@libraries/ui";
 
 interface Menu {
   state: "open" | "close";

@@ -1,0 +1,24 @@
+@import "swatches";
+
+aside {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: $gray_8;
+  width: 70px;
+  padding: 0.6rem;
+  nav {
+    width: inherit;
+    display: flex;
+    flex-flow: column nowrap;
+    a {
+      margin: 0.8rem 0;
+      color: $gray_6;
+      &.active {
+        color: $teal_4;
+      }
+    }
+  }
+}

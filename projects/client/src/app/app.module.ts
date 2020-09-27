@@ -4,9 +4,9 @@ import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 
 import { firebase } from "@config";
-import { SvgModule } from "@shared/directives";
-import { WindowModule } from "@shared/services";
-import { CoreDataModule } from "@shared/core-data";
+import { CoreDataModule } from "@libraries/core-data";
+import { SvgModule, WindowModule } from "@libraries/ui";
+
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { environment } from "../environments/environment";

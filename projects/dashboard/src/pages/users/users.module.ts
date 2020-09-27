@@ -1,20 +1,13 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { RouterModule, Routes } from "@angular/router";
-
-import {
-  SvgModule,
-  ButtonModule,
-  CardModule,
-  BusinessCardModule,
-} from "@libraries/ui";
-
 import { ListComponent } from "./list/list.component";
 import { DetailsComponent } from "./details/details.component";
+import { RouterModule, Routes } from "@angular/router";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 const routes: Routes = [
   { path: "", component: ListComponent },
-  { path: ":name/:id", component: DetailsComponent },
+  { path: ":id", component: DetailsComponent },
 ];
 
 @NgModule({
@@ -22,10 +15,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    CardModule,
-    SvgModule,
-    ButtonModule,
-    BusinessCardModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
 })
-export class BusinessPageModule {}
+export class UsersPageModule {}

@@ -14,14 +14,9 @@
 
 <section class="services" *ngIf="cards$ | async as cards">
   <div class="card-container">
-    <rx-card class="card-service" *ngFor="let card of cards">
-      <div class="card-body" body>
-        <img [src]="card.picture" alt="img-{{ card.name }}" />
-        <p>{{ card.desciption }}</p>
-        <a [routerLink]="['/services', card.name, card.id]" rx-button>{{
-          card.name
-        }}</a>
-      </div>
-    </rx-card>
+    <rx-business-card
+      *ngFor="let card of cards"
+      [data]="card"
+    ></rx-business-card>
   </div>
 </section>

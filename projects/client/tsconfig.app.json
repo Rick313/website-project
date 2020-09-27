@@ -3,12 +3,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "../../out-tsc/app",
-    "types": [],
-    "paths": {
-      "@pages": ["./projects/client/src/pages/index.ts"],
-      "@shared/*": ["./shared/*"],
-      "@config": ["./config/index.ts"]
-    }
+    "types": []
   },
   "files": ["src/main.ts", "src/polyfills.ts"],
   "include": ["src/**/*.d.ts"]

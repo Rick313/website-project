@@ -1,24 +1,39 @@
 <ng-container *ngIf="user$ | async as user; else auth">
-  <nav></nav>
+  <aside>
+    <div>
+      <button>Collapse</button>
+      <nav>
+        <a
+          *ngFor="let link of navigation"
+          [routerLink]="link.path"
+          [routerLinkActive]="'active'"
+          >{{ link.label }}</a
+        >
+      </nav>
+    </div>
+    <div>
+      <button>Log out</button>
+    </div>
+  </aside>
 
   <main>
+    <rx-table>
+      <tr slot="head">
+        <th scope="col">#</th>
+        <th scope="col">name</th>
+        <th scope="col">edit</th>
+        <th scope="col">delete</th>
+      </tr>
+      <tr slot="body">
+        <th scope="row">1</th>
+        <td>Bob</td>
+        <td><button>Edit</button></td>
+        <td><Button>Delete</Button></td>
+      </tr>
+    </rx-table>
+
     <router-outlet></router-outlet>
   </main>
 </ng-container>
 
-<ng-template #auth>
-  <form (ngSubmit)="signin()">
-    <div class="form-control">
-      <label for="email">email<span>*</span></label>
-      <input type="email" required />
-    </div>
-    <div class="form-control">
-      <label for="email">password<span>*</span></label>
-      <input type="password" required />
-    </div>
-
-    <div class="form-button">
-      <button type="submit">log in</button>
-    </div>
-  </form>
-</ng-template>
+<ng-template #auth> </ng-template>

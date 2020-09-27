@@ -1,31 +1,37 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
+
+const pages = import("../pages");
 const routes: Routes = [
   {
     path: "home",
-    loadChildren: () => import("@pages").then((p) => p.HomePageModule),
+    loadChildren: () => pages.then(({ HomePageModule }) => HomePageModule),
   },
   {
     path: "services",
-    loadChildren: () => import("@pages").then((p) => p.BusinessPageModule),
+    loadChildren: () =>
+      pages.then(({ BusinessPageModule }) => BusinessPageModule),
   },
   {
     path: "about",
-    loadChildren: () => import("@pages").then((p) => p.AboutPageModule),
+    loadChildren: () => pages.then(({ AboutPageModule }) => AboutPageModule),
   },
   {
     path: "contact",
-    loadChildren: () => import("@pages").then((p) => p.ContactPageModule),
+    loadChildren: () =>
+      pages.then(({ ContactPageModule }) => ContactPageModule),
   },
 
   // Supplement
   {
     path: "portfolio",
-    loadChildren: () => import("@pages").then((p) => p.PortfolioPageModule),
+    loadChildren: () =>
+      pages.then(({ PortfolioPageModule }) => PortfolioPageModule),
   },
   {
     path: "tutorials",
-    loadChildren: () => import("@pages").then((p) => p.TutorialsPageModule),
+    loadChildren: () =>
+      pages.then(({ TutorialsPageModule }) => TutorialsPageModule),
   },
   {
     path: "",

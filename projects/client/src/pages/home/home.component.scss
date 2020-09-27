@@ -29,7 +29,10 @@
   width: 100%;
   padding-top: 0.4rem;
   padding-bottom: 1rem;
-  .card-service {
+  rx-business-card {
     flex-basis: 60%;
+    &:first-of-type {
+      margin-left: 0;
+    }
   }
 }
