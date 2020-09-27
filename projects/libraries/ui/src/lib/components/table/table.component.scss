@@ -1,0 +1,27 @@
+@import "swatches";
+
+:host {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead ::ng-deep th {
+    border-bottom: 2px solid $gray_6;
+  }
+
+  tbody ::ng-deep th,
+  tbody ::ng-deep td {
+    border-top: 1px solid $gray_6;
+  }
+
+  ::ng-deep th,
+  ::ng-deep td {
+    padding: 0.8rem;
+  }
+}
